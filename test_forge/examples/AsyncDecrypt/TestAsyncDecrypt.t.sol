@@ -2,7 +2,7 @@
 pragma solidity ^0.8.24;
 
 import { Test } from "forge-std/src/Test.sol";
-import { console } from "forge-std/src/Console.sol";
+import { console } from "forge-std/src/console.sol";
 
 import { TFHE, euint8, einput } from "fhevm/lib/TFHE.sol";
 import { Gateway } from "fhevm/gateway/lib/Gateway.sol";
