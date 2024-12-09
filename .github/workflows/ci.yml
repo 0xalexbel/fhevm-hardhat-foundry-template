@@ -36,9 +36,6 @@ jobs:
       - name: "Install the dependencies"
         run: "pnpm install"
 
-      - name: "Install Forge dependencies"
-        run: "forge soldeer install"
-
       - name: "Lint the code"
         run: "pnpm lint"
 
