@@ -28,8 +28,16 @@ jobs:
           cache: "pnpm"
           node-version: "lts/*"
 
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: nightly
+
       - name: "Install the dependencies"
         run: "pnpm install"
+
+      - name: "Install Forge dependencies"
+        run: "forge soldeer install"
 
       - name: "Lint the code"
         run: "pnpm lint"
