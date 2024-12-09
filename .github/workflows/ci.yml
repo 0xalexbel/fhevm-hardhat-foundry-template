@@ -38,9 +38,6 @@ jobs:
       - name: "Install the dependencies"
         run: "pnpm install"
 
-      - name: "Install Forge dependencies"
-        run: "forge soldeer install"
-
       - name: "Lint the code"
         run: "pnpm lint"
 
@@ -52,11 +49,11 @@ jobs:
       - name: "Compile the contracts and generate the TypeChain bindings"
         run: "pnpm typechain"
 
-      - name: "Test the contracts and generate the coverage report"
-        run: "pnpm coverage"
-
       - name: "Run Forge tests"
         run: "forge test"
+
+      - name: "Test the contracts and generate the coverage report"
+        run: "pnpm coverage"
 
       - name: "Add test summary"
         run: |
