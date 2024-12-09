@@ -10,8 +10,10 @@ export default [
     linterOptions: {
       reportUnusedDisableDirectives: "off",
     },
-    ignores: [".abi/", ".artifacts/", ".cache/", ".coverage/", ".res/", ".types/"],
   },
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
+  {
+    ignores: ["abi/", "artifacts/", "cache/", "coverage/", "res/", "types/", "dependencies/", "out/", "cache_forge/"],
+  },
 ];
