@@ -89,7 +89,7 @@
     "lint:sol": "solhint --max-warnings 25 \"contracts/**/*.sol\"",
     "lint:ts": "eslint .",
     "forgeinstall": "forge soldeer install",
-    "postinstall": "DOTENV_CONFIG_PATH=./.env.example pnpm typechain && pnpm forgeinstall",
+    "postinstall": "DOTENV_CONFIG_PATH=./.env.example pnpm typechain",
     "prettier:check": "prettier --check \"**/*.{js,json,md,sol,ts,yml}\"",
     "prettier:write": "prettier --write \"**/*.{js,json,md,sol,ts,yml}\"",
     "typechain": "cross-env TS_NODE_TRANSPILE_ONLY=true hardhat typechain",
