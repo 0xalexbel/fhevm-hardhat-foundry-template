@@ -19,6 +19,7 @@ abi/
 cache_forge
 out
 dependencies
+soldeer.lock
 
 # files
 *.env
