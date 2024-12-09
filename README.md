@@ -64,6 +64,16 @@ You can edit the CI script in [.github/workflows/ci.yml](./.github/workflows/ci.
 
 ## Usage
 
+### Install Foundry
+
+This template requires Foundry to be installed on your system.
+
+Install [Foundry](https://book.getfoundry.sh/getting-started/installation)
+
+```sh
+curl -L https://foundry.paradigm.xyz | bash
+```
+
 ### Pre Requisites
 
 Install [pnpm](https://pnpm.io/installation)
@@ -80,6 +90,7 @@ If you don't already have a mnemonic, you can use this [website](https://iancole
 Then, install all needed dependencies - please **_make sure to use Node v20_** or more recent:
 
 ```sh
+# Make sure Forge Foundry is properly installed. If it's not the case the command below will fail!
 pnpm install
 ```
 
@@ -210,14 +221,6 @@ If you use VSCode, you can get Solidity syntax highlighting with the
 [hardhat-solidity](https://marketplace.visualstudio.com/items?itemName=NomicFoundation.hardhat-solidity) extension.
 
 ## Foundry
-
-### Install Foundry
-
-Install [Foundry](https://book.getfoundry.sh/getting-started/installation)
-
-```sh
-curl -L https://foundry.paradigm.xyz | bash
-```
 
 ### Install dependencies
 
