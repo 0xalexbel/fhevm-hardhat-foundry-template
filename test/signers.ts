@@ -3,6 +3,7 @@ import { ethers } from "hardhat";
 
 import { ACCOUNT_NAMES } from "./constants";
 
+/* eslint-disable @typescript-eslint/no-unused-vars */
 type AccountNames = (typeof ACCOUNT_NAMES)[number];
 
 export interface Signers {

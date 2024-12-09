@@ -120,7 +120,7 @@ const fulfillAllPastRequestsIds = async (mocked: boolean) => {
         await awaitCoprocessor();
 
         // first check tat all handles are allowed for decryption
-        const aclArtifact = require("fhevm-core-contracts/artifacts/contracts/ACL.sol/ACL.json");
+        const aclArtifact = await import("fhevm-core-contracts/artifacts/contracts/ACL.sol/ACL.json");
         const acl = await ethers.getContractAt(aclArtifact.abi, ACL_ADDRESS);
         const isAllowedForDec = await Promise.all(handles.map(async (handle) => acl.isAllowedForDecryption(handle)));
         if (!allTrue(isAllowedForDec)) {

@@ -209,6 +209,34 @@ Note that you should replace the address placeholder `[CONFIDENTIAL_ERC20_ADDRES
 If you use VSCode, you can get Solidity syntax highlighting with the
 [hardhat-solidity](https://marketplace.visualstudio.com/items?itemName=NomicFoundation.hardhat-solidity) extension.
 
+## Foundry
+
+### Install Foundry
+
+Install [Foundry](https://book.getfoundry.sh/getting-started/installation)
+
+```sh
+curl -L https://foundry.paradigm.xyz | bash
+```
+
+### Install dependencies
+
+```sh
+forge soldeer install
+```
+
+### Build
+
+```sh
+forge build
+```
+
+### Test
+
+```sh
+forge test
+```
+
 ## License
 
 This project is licensed under MIT.

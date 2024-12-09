@@ -156,6 +156,7 @@ export async function reencryptEbytes256(
  * @dev This function is to reencrypt handles.
  *      It does not verify types.
  */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 async function reencryptHandle(
   signer: Signer,
   instance: FhevmInstance,
