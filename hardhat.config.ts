@@ -20,15 +20,6 @@ extendProvider(async (provider) => {
   return newProvider;
 });
 
-task("compile:specific", "Compiles only the specified contract")
-  .addParam("contract", "The contract's path")
-  .setAction(async ({ contract }, hre) => {
-    // Adjust the configuration to include only the specified contract
-    hre.config.paths.sources = contract;
-
-    await hre.run("compile");
-  });
-
 const dotenvConfigPath: string = process.env.DOTENV_CONFIG_PATH || "./.env";
 dotenv.config({ path: resolve(__dirname, dotenvConfigPath) });
 
