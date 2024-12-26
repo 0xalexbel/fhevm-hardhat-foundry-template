@@ -20,7 +20,7 @@ describe("ConfidentialERC20:FHEGas", function () {
   });
 
   it("gas consumed during transfer", async function () {
-    const transaction = await this.erc20.mint(10000);
+    const transaction = await this.erc20.mint(this.signers.alice, 10000);
     const t1 = await transaction.wait();
     expect(t1?.status).to.eq(1);
 
@@ -28,7 +28,7 @@ describe("ConfidentialERC20:FHEGas", function () {
     input.add64(1337);
     const encryptedTransferAmount = await input.encrypt();
     const tx = await this.erc20["transfer(address,bytes32,bytes)"](
-      this.signers.bob.address,
+      this.signers.bob,
       encryptedTransferAmount.handles[0],
       encryptedTransferAmount.inputProof,
     );
@@ -44,14 +44,14 @@ describe("ConfidentialERC20:FHEGas", function () {
   });
 
   it("gas consumed during transferFrom", async function () {
-    const transaction = await this.erc20.mint(10000);
+    const transaction = await this.erc20.mint(this.signers.alice, 10000);
     await transaction.wait();
 
     const inputAlice = this.fhevm.createEncryptedInput(this.contractAddress, this.signers.alice.address);
     inputAlice.add64(1337);
     const encryptedAllowanceAmount = await inputAlice.encrypt();
     const tx = await this.erc20["approve(address,bytes32,bytes)"](
-      this.signers.bob.address,
+      this.signers.bob,
       encryptedAllowanceAmount.handles[0],
       encryptedAllowanceAmount.inputProof,
     );
@@ -62,8 +62,8 @@ describe("ConfidentialERC20:FHEGas", function () {
     inputBob2.add64(1337); // below allowance so next tx should send token
     const encryptedTransferAmount2 = await inputBob2.encrypt();
     const tx3 = await bobErc20["transferFrom(address,address,bytes32,bytes)"](
-      this.signers.alice.address,
-      this.signers.bob.address,
+      this.signers.alice,
+      this.signers.bob,
       encryptedTransferAmount2.handles[0],
       encryptedTransferAmount2.inputProof,
     );
@@ -71,9 +71,9 @@ describe("ConfidentialERC20:FHEGas", function () {
     if (network.name === "hardhat") {
       // `getFHEGasFromTxReceipt` function only works in mocked mode but gives same exact FHEGas consumed than on the real fhEVM
       const FHEGasConsumedTransferFrom = getFHEGasFromTxReceipt(t3);
-      console.log("FHEGas Consumed during transfer", FHEGasConsumedTransferFrom);
+      console.log("FHEGas Consumed during transferFrom", FHEGasConsumedTransferFrom);
     }
     // contrarily to FHEGas, native gas in mocked mode slightly differs from the real gas consumption on fhevm (underestimated by ~20%)
-    console.log("Native Gas Consumed during transfer", t3.gasUsed);
+    console.log("Native Gas Consumed during transferFrom", t3.gasUsed);
   });
 });

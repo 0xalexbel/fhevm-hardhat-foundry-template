@@ -33,13 +33,15 @@ contract MyConfidentialERC20Test is Test {
     }
 
     function test_should_mint_contract() public {
-        vm.assertEq(erc20.owner(), signers.aliceAddr());
+        address aliceAddr = signers.aliceAddr();
+
+        vm.assertEq(erc20.owner(), aliceAddr);
 
         vm.broadcast(signers.alice());
-        erc20.mint(1000);
+        erc20.mint(aliceAddr, 1000);
 
-        euint64 balanceHandle = erc20.balanceOf(signers.aliceAddr());
-        uint64 balance = FhevmDebug.decryptU64(balanceHandle, address(erc20), signers.aliceAddr());
+        euint64 balanceHandle = erc20.balanceOf(aliceAddr);
+        uint64 balance = FhevmDebug.decryptU64(balanceHandle, address(erc20), aliceAddr);
         vm.assertEq(balance, 1000);
 
         uint64 totalSupply = erc20.totalSupply();
@@ -53,7 +55,7 @@ contract MyConfidentialERC20Test is Test {
         vm.assertEq(erc20.owner(), aliceAddr);
 
         vm.broadcast(signers.alice());
-        erc20.mint(10000);
+        erc20.mint(aliceAddr, 10000);
 
         euint64 balanceHandleAlice = erc20.balanceOf(aliceAddr);
         FhevmDebug.assertArithmeticallyValid(balanceHandleAlice);
@@ -83,7 +85,7 @@ contract MyConfidentialERC20Test is Test {
         vm.assertEq(erc20.owner(), aliceAddr);
 
         vm.broadcast(signers.alice());
-        erc20.mint(1000);
+        erc20.mint(aliceAddr, 1000);
 
         (einput inputHandle, bytes memory inputProof) = FFhevm.encryptU64(1337, address(erc20), aliceAddr);
 
@@ -120,7 +122,7 @@ contract MyConfidentialERC20Test is Test {
         vm.assertEq(erc20.owner(), aliceAddr);
 
         vm.broadcast(signers.alice());
-        erc20.mint(10000);
+        erc20.mint(aliceAddr, 10000);
 
         bytes memory proof;
         einput encAmount;

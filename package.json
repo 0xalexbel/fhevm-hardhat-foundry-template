@@ -1,7 +1,7 @@
 {
-  "name": "@zama-ai/fhevm-hardhat-template",
-  "description": "fhEVM hardhat template",
-  "version": "1.0.0",
+  "name": "fhevm-hardhat-foundry-template",
+  "description": "fhEVM hardhat foundry template",
+  "version": "0.6.2",
   "engines": {
     "node": ">=20.0.0"
   },
